@@ -1,0 +1,31 @@
+name: pull request check
+
+on:
+  pull_request:
+    types: [ opened, reopened ]
+    branches: [ "main" ]
+  
+
+
+jobs:
+  terraform:
+    name: pull request terraform validation check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Pull Request code
+        uses: actions/checkout@v4
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.10.4"
+      
+      - name: Check terraform fmt 
+        run: terraform fmt -check -recursive
+      
+      - name: Initialize Terraform
+        run: terraform init 
+      
+      - name: Check terraform Validate
+        run: terraform validate
