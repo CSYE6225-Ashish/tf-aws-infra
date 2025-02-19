@@ -24,7 +24,7 @@ data "aws_availability_zones" "available" {}
 resource "aws_vpc" "main" {
   cidr_block = var.vpc.cidr # Replace with your desired CIDR block
   tags = {
-     Name = var.vpc.name
+    Name = var.vpc.name
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "public" {
     Name = "Public Subnet ${count.index + 1}"
   }
 
-}
+
 
 resource "aws_subnet" "private" {
   count                   = local.zone_logic
