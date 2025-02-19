@@ -7,7 +7,6 @@ terraform {
   }
 
   required_version = ">= 1.2.0"
-
 }
 
 
@@ -38,7 +37,6 @@ resource "aws_subnet" "public" {
   tags = {
     Name = "Public Subnet ${count.index + 1}"
   }
-
 }
 
 resource "aws_subnet" "private" {
@@ -50,7 +48,6 @@ resource "aws_subnet" "private" {
   tags = {
     Name = "Private Subnet ${count.index + 1}"
   }
-
 }
 
 resource "aws_internet_gateway" "InternetGateway" {

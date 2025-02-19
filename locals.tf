@@ -5,7 +5,6 @@ locals {
   private_subnet_ids = { for idx, subnet in aws_subnet.private : "private-${idx}" => subnet.id }
 }
 
-
 locals {
   # Logic for multiple condition
   zone_logic = length(data.aws_availability_zones.available.names) >= 3 ? 3 : length(data.aws_availability_zones.available.names)
