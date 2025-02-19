@@ -24,7 +24,7 @@ data "aws_availability_zones" "available" {}
 resource "aws_vpc" "main" {
   cidr_block = var.vpc.cidr # Replace with your desired CIDR block
   tags = {
-    Name = var.vpc.name
+     Name = var.vpc.name
   }
 }
 
