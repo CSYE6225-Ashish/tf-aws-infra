@@ -39,7 +39,7 @@ resource "aws_subnet" "public" {
     Name = "Public Subnet ${count.index + 1}"
   }
 
-}
+
 
 resource "aws_subnet" "private" {
   count                   = local.zone_logic
