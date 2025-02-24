@@ -1,7 +1,7 @@
 
 # Create a local variable to store the subnet IDs
 locals {
-  public_subnet_ids  = { for idx, subnet in aws_subnet.public : "public-${idx}" => subnet.id }
+     public_subnet_ids  = { for idx, subnet in aws_subnet.public : "public-${idx}" => subnet.id }
   private_subnet_ids = { for idx, subnet in aws_subnet.private : "private-${idx}" => subnet.id }
 }
 
