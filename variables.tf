@@ -30,3 +30,43 @@ variable "key_pair" {
   default = "test.pem"
 
 }
+variable "ENV" {
+  type    = string
+  default = "prod"
+}
+
+variable "PORT" {
+  type    = number
+  default = 8080
+}
+
+variable "db_identifier" {
+  type    = string
+  default = "csye6225"
+}
+
+variable "db_engine" {
+  type    = string
+  default = "mysql"
+}
+
+variable "db_instance_class" {
+  type    = string
+  default = "db.t4g.micro"
+}
+variable "db_allocated_storage" {
+  type    = number
+  default = 20
+}
+
+variable "db_name" {
+  type    = string
+  default = "csye6225"
+}
+
+variable "db_username" {
+  type    = string
+  default = "csye6225"
+}
+
+
