@@ -69,4 +69,8 @@ variable "db_username" {
   default = "csye6225"
 }
 
+variable "db_password" {
+  type    = string
+  default = "Admin#8060"
+}
 
