@@ -26,7 +26,7 @@ resource "aws_db_instance" "csye6225_instance" {
   allocated_storage    = var.db_allocated_storage
   db_name              = var.db_name
   username             = var.db_username
-  password             = random_password.rds_master_password.result
+  password             = var.db_password
   parameter_group_name = aws_db_parameter_group.csye6225pg.name
   db_subnet_group_name = aws_db_subnet_group.private_db_subnet_group.name
   publicly_accessible  = false

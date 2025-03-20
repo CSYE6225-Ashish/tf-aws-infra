@@ -10,7 +10,7 @@ resource "aws_instance" "app_server" {
     # Existing environment variables from AWS DB Instance
     echo "DB_HOST=\"${split(":", aws_db_instance.csye6225_instance.endpoint)[0]}\"" > /opt/csye6225/.env
     echo "DB_USERNAME=\"${aws_db_instance.csye6225_instance.username}\"" >> /opt/csye6225/.env
-    echo "DB_PASSWORD=\"${aws_db_instance.csye6225_instance.password}\"" >> /opt/csye6225/.env
+    echo "DB_PASSWORD=\"${var.db_password}\"" >> /opt/csye6225/.env
     echo "DB_NAME=\"${aws_db_instance.csye6225_instance.db_name}\"" >> /opt/csye6225/.env
     echo "S3_BUCKET=\"${aws_s3_bucket.private_bucket.id}\"" >> /opt/csye6225/.env
     echo "AWS_REGION=\"${var.region}\"" >> /opt/csye6225/.env
