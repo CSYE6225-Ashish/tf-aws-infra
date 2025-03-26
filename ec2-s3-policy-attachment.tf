@@ -19,7 +19,7 @@ resource "aws_iam_role" "ec2_s3_role" {
 
 resource "aws_iam_policy" "s3_access_policy" {
   name        = "s3-access-policy"
-  description = "Policy for EC2 to access S3"
+  description = "Policy for EC2 to access S3 and CloudWatch"
 
   policy = <<EOF
   {
@@ -37,11 +37,29 @@ resource "aws_iam_policy" "s3_access_policy" {
           "arn:aws:s3:::${aws_s3_bucket.private_bucket.id}",
           "arn:aws:s3:::${aws_s3_bucket.private_bucket.id}/*"
         ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "cloudwatch:PutMetricData",
+          "cloudwatch:GetMetricData"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "logs:PutLogEvents",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream"
+        ],
+        "Resource": "arn:aws:logs:*:*:*"
       }
     ]
   }
   EOF
 }
+
 
 resource "aws_iam_role_policy_attachment" "s3_attach" {
   policy_arn = aws_iam_policy.s3_access_policy.arn

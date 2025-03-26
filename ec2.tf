@@ -19,6 +19,8 @@ resource "aws_instance" "app_server" {
     
     sudo chown csye6225:csye6225 /opt/csye6225/.env
 
+    sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
+
   EOF
 
 
