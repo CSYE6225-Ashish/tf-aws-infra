@@ -73,4 +73,109 @@ variable "db_password" {
   type    = string
   default = "Admin#8060"
 }
+#Assignment 7 changes
+variable "webapp_application_autoscaling_group_min_size" {
+  type    = number
+  default = 1
+}
 
+variable "webapp_application_autoscaling_group_max_size" {
+  type    = number
+  default = 3
+}
+
+variable "webapp_application_autoscaling_group_desired_capacity" {
+  type    = number
+  default = 1
+}
+
+
+variable "webapp_application_autoscaling_group_health_check_grace_period" {
+  type    = number
+  default = 100
+}
+
+variable "scale_up_scaling_adjustment" {
+  type    = number
+  default = 1
+}
+
+variable "scale_up_cooldown" {
+  type    = number
+  default = 120
+}
+
+variable "scale_down_cooldown" {
+  type    = number
+  default = 120
+}
+
+variable "scale_down_scaling_adjustment" {
+  type    = number
+  default = -1
+}
+
+variable "cpu_high_evaluation_periods" {
+  type    = number
+  default = 2
+}
+
+variable "cpu_high_period" {
+  type    = number
+  default = 60
+}
+
+variable "cpu_high_threshold" {
+  type    = number
+  default = 10
+}
+
+variable "cpu_low_evaluation_periods" {
+  type    = number
+  default = 2
+}
+
+variable "cpu_low_period" {
+  type    = number
+  default = 60
+}
+
+variable "cpu_low_threshold" {
+  type    = number
+  default = 10
+}
+
+variable "health_check_healthy_threshold" {
+  type    = number
+  default = 3
+}
+
+variable "health_check_unhealthy_threshold" {
+  type    = number
+  default = 5
+}
+
+variable "health_check_interval" {
+  type    = number
+  default = 30
+}
+
+variable "health_check_timeout" {
+  type    = number
+  default = 10
+}
+
+variable "web_app_dns_zone_id" {
+  type    = string
+  default = "Z0820724QT2S4OL9OWJN"
+}
+
+variable "web_app_dns_name" {
+  type    = string
+  default = "demo.ashishgangaramani.me"
+}
+
+variable "web_app_dns_ttl" {
+  type    = number
+  default = 60
+}
