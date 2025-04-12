@@ -22,10 +22,12 @@ resource "aws_lb_target_group" "webapp_loadbalancer_tg" {
   }
 }
 
-resource "aws_lb_listener" "http_listener" {
+
+resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.webapp_loadbalancer.arn
-  port              = 80
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn   = var.certificate_arn
 
   default_action {
     type             = "forward"

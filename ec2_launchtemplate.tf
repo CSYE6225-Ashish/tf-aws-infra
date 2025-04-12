@@ -20,22 +20,26 @@ resource "aws_launch_template" "app_server_launch_template" {
 
   #  Attach EBS volume to the device
   block_device_mappings {
-    device_name = "/dev/xvda"
+    device_name = "/dev/sda1"
     ebs {
       volume_size           = 8
       volume_type           = "gp2"
       delete_on_termination = true
+      encrypted             = true
+      kms_key_id            = aws_kms_key.ec2.arn
     }
   }
 
   # User data that would be used while launching instance
   user_data = base64encode(<<-EOF
     #!/bin/bash
+    
+    SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id ${aws_secretsmanager_secret.db_secretmetadata.arn} --query SecretString --output text)
 
     # Existing environment variables from AWS DB Instance
     echo "DB_HOST=\"${split(":", aws_db_instance.csye6225_instance.endpoint)[0]}\"" > /opt/csye6225/.env
     echo "DB_USERNAME=\"${aws_db_instance.csye6225_instance.username}\"" >> /opt/csye6225/.env
-    echo "DB_PASSWORD=\"${var.db_password}\"" >> /opt/csye6225/.env
+    echo "DB_PASSWORD=\"$SECRET_VALUE\"" >> /opt/csye6225/.env
     echo "DB_NAME=\"${aws_db_instance.csye6225_instance.db_name}\"" >> /opt/csye6225/.env
     echo "S3_BUCKET=\"${aws_s3_bucket.private_bucket.id}\"" >> /opt/csye6225/.env
     echo "AWS_REGION=\"${var.region}\"" >> /opt/csye6225/.env
