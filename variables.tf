@@ -179,3 +179,18 @@ variable "web_app_dns_ttl" {
   type    = number
   default = 60
 }
+
+variable "kms_rotation_window" {
+  type    = number
+  default = 90
+}
+
+variable "kms_deletion_window" {
+  type    = number
+  default = 10
+}
+
+variable "certificate_arn" {
+  type    = string
+  default = "arn:aws:acm:us-east-1:343218179908:certificate/dadab474-01d8-4622-b265-c78598660616"
+}
