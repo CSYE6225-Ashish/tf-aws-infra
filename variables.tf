@@ -196,6 +196,6 @@ variable "certificate_arn" {
 }
 
 variable "role_arn_kms" {
-  type = string
+  type    = string
   default = "arn:aws:iam::343218179908:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
 }
