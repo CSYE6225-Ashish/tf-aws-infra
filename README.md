@@ -234,6 +234,18 @@ The workflow consists of the following key steps:
 5. **Validate Terraform Configuration**  
    The `terraform validate` command is used to check if the Terraform configuration is syntactically correct and if it can be applied without errors.
 
+
+6. Adding certificate using AWS CLI
+
+    Following command was used to create a certificate in demo account:\n
+    `aws acm import-certificate --profile demo --certificate fileb://demo_ashishgangaramani_me.crt --certificate-chain fileb://demo_ashishgangaramani_me.ca-bundle --private-key fileb://RSAPRIVATEKEY.pem`
+    Output:
+    `{
+      "CertificateArn": "arn:aws:acm:us-east-1:343218179908:certificate/12e8a4ca-d7df-454f-8db2-4bb78897a19f"
+    }`
+
+
+
 ### Purpose
 
 The goal of this workflow is to automatically verify Terraform code for consistency, syntax, and correctness before changes are merged into the main branch. By catching potential errors early, it helps improve the quality and reliability of the infrastructure code.

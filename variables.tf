@@ -194,3 +194,8 @@ variable "certificate_arn" {
   type    = string
   default = "arn:aws:acm:us-east-1:343218179908:certificate/dadab474-01d8-4622-b265-c78598660616"
 }
+
+variable "role_arn_kms" {
+  type = string
+  default = "arn:aws:iam::343218179908:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+}

@@ -41,7 +41,7 @@ resource "aws_kms_key" "ec2" {
         "Effect" : "Allow",
         "Principal" : {
           "AWS" : [
-            "arn:aws:iam::343218179908:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+            var.role_arn_kms
           ]
         },
         "Action" : [
@@ -57,7 +57,7 @@ resource "aws_kms_key" "ec2" {
         "Effect" : "Allow",
         "Principal" : {
           "AWS" : [
-            "arn:aws:iam::343218179908:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
+            var.role_arn_kms
           ]
         },
         "Action" : [
